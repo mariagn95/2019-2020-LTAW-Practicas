@@ -1,0 +1,22 @@
+body {
+  background-color: lightblue;
+}
+
+
+header, footer{
+  background-color: white;
+  border-style: solid;
+  border-radius: 20px;
+  padding: 5px;
+  text-align: center;
+
+
+}
+
+.sepadador1{
+  padding: 20px;
+}
+
+.centro{
+  width: 60%;
+}
