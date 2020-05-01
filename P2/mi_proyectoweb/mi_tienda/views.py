@@ -119,3 +119,16 @@ def test4(request):
 # -- Se le pasa como argumento el fichero de la plantilla y el direccionario
 # -- con las variables y sus valores para sustituirse en la plantilla
 # -- En el fichero test.html es el TEST 3 y por eso nos va a aparecer Test3
+
+
+
+# -- Ejemplo de acceso a los recursos estáticos desde la plantilla
+def test5(request):
+    # -- Obtener el número aleatorio
+    numero = randint(0, 100)
+    return render(request, 'test5.html', {'numero':str(numero)})
+
+# -- Se hace una plantilla que utilice recursos estáticos
+# -- Para acceder a cualquier nombre de recurso estático, hay que añadir
+# -- el prefijo static/. Desde las plantillas lo hacemos usando esta estructura:
+# -- {% static 'nombre_recursos' %} en el html
