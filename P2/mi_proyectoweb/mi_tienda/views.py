@@ -104,3 +104,18 @@ def test3(request):
 
 # -- La plantilla se lee desde el fichero, mediante la función get_template()
 # -- Luego se aplica el contexto, se renderiza la página y se envía la respuesta
+
+
+
+
+# -- Ejemplo de uso de la función Render
+def test4(request):
+    # -- Obtener el número aleatorio
+    numero = randint(0, 100)
+    return render(request, 'test.html', {'numero':str(numero)})
+
+# -- El proceso de la lectura de la plantilla y sustitución de las variables
+# -- por su valores se puede hacer con la función render()
+# -- Se le pasa como argumento el fichero de la plantilla y el direccionario
+# -- con las variables y sus valores para sustituirse en la plantilla
+# -- En el fichero test.html es el TEST 3 y por eso nos va a aparecer Test3
