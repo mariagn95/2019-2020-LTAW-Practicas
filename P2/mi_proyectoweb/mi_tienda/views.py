@@ -162,3 +162,28 @@ def list2(request):
 # -- Con ellas se define un bucle que recorra todos los productos.
 # -- Para cada producto generamos la etiqueta HTML li (elemento de lista),
 # -- con el nombre del producto y su precio
+
+
+
+# -- Ejemplo de la vista que nos permite hacer un encargo en la tienda
+def formulario1(request):
+    return render(request, 'formulario1.html', {})
+
+# -- Responde con el html del cliente
+
+
+# -- Ejemplo de la vista que nos permite recibir datos
+def recepcion1(request):
+    # -- Obtener el nombre de la persona
+    persona = request.POST['nombre']
+    # -- Imprimirlo en la consola del servidor
+    print(f" PEDIDO RECIBIDO!!! ----> {persona}")
+    return HttpResponse("Datos recibidos!!. Comprador: " + request.POST['nombre'])
+
+# -- Lo primero que hace esta función es leer los datos que han
+# --  llegado del formulario. Lo hace a través del método POST,
+# -- indicando el nombre del campo a leer. En nuestro ejemplo es "nombre"
+# -- Este nombre se imprime en la consola, para verlo en el servidor,
+# -- y comprobar que efectivamente se ha recibido correctametne.
+# -- Se crea un mensaje de respuesta con una mini-página web que nos confirma
+# -- que ha recibido los datos. y además pone el nombre que ha recibido
