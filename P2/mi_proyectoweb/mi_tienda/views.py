@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from random import randint
 from django.template import Template, Context
+from django.template.loader import get_template
 
 # -- Vista principal de mi tienda
 # -- El nombre de la vista puede ser cualquiera. Nosotros lo hemos
@@ -80,3 +81,26 @@ def test2(request):
 # -- y la variable {{numero}} se realiza en el contexto. Luego se crea
 # -- la página HTML final a partir de este contexto y se envía al cliente
 # -- para su visualización
+
+
+
+
+# -- Ejemplo de generacion mediante una plantilla en FICHERO
+def test3(request):
+
+    # -- Obtener el número aleatorio
+    numero = randint(0, 100)
+
+    # -- Leer la plantilla del fichero
+    t = get_template('test.html')
+
+    # -- Crear el contexto: Asignar el numero
+    c = {'numero': str(numero)}
+
+    # -- Obtener la pagina html final
+    html = t.render(c)
+
+    return HttpResponse(html)
+
+# -- La plantilla se lee desde el fichero, mediante la función get_template()
+# -- Luego se aplica el contexto, se renderiza la página y se envía la respuesta
