@@ -1,5 +1,7 @@
 # -- Fichero mi_tienda/views.py
 from django.http import HttpResponse
+from django.shortcuts import render
+from random import randint
 
 # -- Vista principal de mi tienda
 # -- El nombre de la vista puede ser cualquiera. Nosotros lo hemos
@@ -7,3 +9,33 @@ from django.http import HttpResponse
 # -- Se recibe el mensaje HTTP de solicitud y se devuelve un mensaje HTTP de respuesta
 def index(request): # -- index (es mi función de retrollada)
     return HttpResponse("Hola! esta es la página principal de Mi tienda!")
+
+
+# -- Ejemplo de generacion a partir de cadenas con código html
+def test1(request):
+
+    # -- Obtener el número aleatorio
+    numero = randint(0, 100)
+
+    # Párrafo a insertar
+    P = "<p>Numero aleatorio: " + str(numero) + " </p>"
+
+    PAGINA_INI = """
+    <!DOCTYPE html>
+    <html lang="es" dir="ltr">
+      <head>
+        <meta charset="utf-8">
+        <title>Test1</title>
+      </head>
+      <body>
+        <h1>TEST1</h1>
+    """
+
+    PAGINA_FIN = """
+      </body>
+    </html>
+    """
+    return HttpResponse(PAGINA_INI + P + PAGINA_FIN)
+
+# -- El mensaje de respuesta se contruye a partir del
+# -- código HTML empotrado en cadenas.
