@@ -4,6 +4,7 @@ from django.shortcuts import render
 from random import randint
 from django.template import Template, Context
 from django.template.loader import get_template
+from mi_tienda.models import Producto
 
 # -- Vista principal de mi tienda
 # -- El nombre de la vista puede ser cualquiera. Nosotros lo hemos
@@ -132,3 +133,32 @@ def test5(request):
 # -- Para acceder a cualquier nombre de recurso estático, hay que añadir
 # -- el prefijo static/. Desde las plantillas lo hacemos usando esta estructura:
 # -- {% static 'nombre_recursos' %} en el html
+
+
+
+# -- Ejemplo vista para  para leer los productos de la base de datos y
+# -- mostrarlos al usuario
+def list(request):
+    productos = Producto.objects.all()
+    html = "<h2>Listado de articulos</h2>"
+    for prod in productos:
+        print(prod.nombre)
+        html += '<p>'+ prod.nombre + ' ' + str(prod.precio) + '<p>'
+    return HttpResponse(html)
+
+# -- Se importa el modelo de datos: Producto
+# -- Luego se leen todos los productos en la varaible productos
+# -- y se itera por todos los productos, generando un párrafo HTML
+# -- con el nombre del producto y su precio
+# -- Finalmente se envia le mensaje HTML de respuesta
+
+
+# -- Ejemplo de listado de productos a partir de una plantilla
+def list2(request):
+    productos = Producto.objects.all()
+    return render(request, 'listado.html', {'productos':productos})
+
+# -- Se usan dos instrucciones especiales en la plantilla, delimitadas por {% y %}.
+# -- Con ellas se define un bucle que recorra todos los productos.
+# -- Para cada producto generamos la etiqueta HTML li (elemento de lista),
+# -- con el nombre del producto y su precio
