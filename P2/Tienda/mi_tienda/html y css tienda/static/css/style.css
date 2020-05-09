@@ -1,0 +1,162 @@
+*{
+	box-sizing: border-box;
+}
+
+body{
+	margin: 0;
+}
+
+img{
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+a{
+	text-decoration: none;
+	color: black;
+}
+
+input{
+  background-color: #6b97a4;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 10px 30px;
+  cursor: pointer;
+
+}
+
+label{
+	font-family: 'Raleway', sans-serif;
+}
+
+.cabecera{
+	width: 100%;
+	max-width: 1920px;
+	margin: auto;
+}
+
+
+.logo{
+	padding-top: 40px;
+	padding-bottom: 20px;
+	background-color: #c9e3eb;
+}
+
+.logo img{
+	margin: auto;
+}
+
+.seccion{
+	width: 100%;
+	height: 300px;
+	background-color: #ececec;
+}
+
+
+
+
+/********* GALERIA *********/
+
+.galeria1{
+	padding: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.foto1{
+	width: calc(25% - 20px);
+	margin: 10px;
+	position: relative;
+
+}
+
+.tapa{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(255, 255, 255, .9);
+	border: 2px solid #000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	opacity: 0;
+	transition: all 0.2s linear;
+	font-family: 'Raleway', sans-serif;
+}
+
+.foto1:hover .tapa{
+	opacity: 1;
+}
+
+
+
+/********* FOOTER *********/
+
+footer{
+	text-align: center;
+	font-family: 'Raleway', sans-serif;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	background-color: #c9e3eb;
+
+}
+
+/********* PG WEB *********/
+.pagina-web{
+	color: #6b97a4;
+}
+
+
+
+
+/********* PRODUCTOS Y CARRITO*********/
+.body_producto {
+  background-color: lightblue;
+  font-family: 'Raleway', sans-serif;
+  padding: 20px;
+}
+
+.body_carrito {
+  background-color: lightblue;
+  font-family: 'Raleway', sans-serif;
+  padding: 20px;
+	width: 1400px;
+  height: 300px;
+}
+
+.pedido{
+	padding: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.button_pp{
+  background-color: #6b97a4;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 10px 30px;
+  cursor: pointer;
+
+}
+
+.button_pp:hover{
+  background-color: #305661;
+  color: white;
+  box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+}
