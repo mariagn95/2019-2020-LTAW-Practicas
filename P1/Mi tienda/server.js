@@ -1,3 +1,4 @@
+//--- Servidor de Mi tienda ---//
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
@@ -12,7 +13,7 @@ http.createServer((req, res) => {
   console.log("Recurso solicitado (URL):" + req.url)
   console.log("Recurso:" + q.pathname)
 
-  //-- Se define el archivo
+  //-- Se define el fichero
   let filename = ""
   //-- Obtener fichero a devolver
   if (q.pathname == "/") //--http://localhost:8080/
@@ -20,12 +21,12 @@ http.createServer((req, res) => {
   else{
     filename = q.pathname; //-- q.pathname es otro recurso que se pide en el localhost
   }
-  //-- Para sacar el tipo de archivo
+  //-- Para sacar el tipo de fichero
   type_file = filename.split(".")[1] //--Se coge la extensión del archivo
-  filename = "." + filename //--Para leer el archivo. Sin "." no funciona
+  filename = "." + filename //--Para leer el fichero. Sin "." no funciona
 
-  console.log("Filename: " + filename);
-  console.log("Type of file: " + type_file);
+  console.log("Nombre del fichero: " + filename);
+  console.log("Tipo de fichero: " + type_file);
 
   //-- Leer fichero
   fs.readFile(filename, function(err, data) {
