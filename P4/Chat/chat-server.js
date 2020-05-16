@@ -23,7 +23,7 @@ http.listen(PORT, function(){
 //-------- PUNTOS DE ENTRADA DE LA APLICACION WEB
 //-- Página principal
 app.get('/', (req, res) => {
-  let path = __dirname + '/chat-8.html';
+  let path = __dirname + '/chat.html';
   res.sendFile(path);
   console.log("Acceso a " + path);
 });
