@@ -8,13 +8,29 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="chat-client.js" defer></script>
   </head>
-  <body onload="main();">
+  <body onload="main()">
+
     <h1>CHATING</h1>
+
     <div class="galeria1">
-      <input id="msg" autocomplete="off" />
-      <button type="button" id="send">SEND</button>
-      <h3>Mensajes recibidos:</h3>
-      <p id="display"></p>
+
+      <div class="mensajes">
+        <h3>Mensajes recibidos:</h3>
+        <p id="display"></p>
+      </div>
+
+      <div class="enviar">
+        <input id="msg" autocomplete="off" />
+        <button type="button" id="send">SEND</button>
+        <button onclick="help()">HELP</button>
+        <script>
+          function help() {
+            alert("Utiliza el comando '/help'");
+          }
+        </script>
+      </div>
+
     </div>
+
   </body>
 </html>

@@ -1,5 +1,5 @@
 function main() {
-  var nick = prompt("¿Qué Nick quiere utilizar para este chat");
+  var nick = prompt("¿Qué Nick quieres para el chat?");
   console.log("Ejecutando cliente JS...");
 
   //-- Obtener los elementos del DOM

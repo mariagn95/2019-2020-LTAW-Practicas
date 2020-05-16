@@ -28,6 +28,7 @@ http.listen(PORT, function(){
 app.get('/', (req, res) => {
   let path = __dirname + '/index.html';
   res.sendFile(path);
+  console.log("  ");
   console.log("Accediendo al index");
   console.log("  ");
 });
@@ -58,28 +59,60 @@ io.on('connection', function(socket){
 
   //-- Usuario conectado. Imprimir el identificador de su socket
   console.log('--> Usuario conectado!');
-  msg_res = "--> Nuevo usuario conectado";
+  msg_res = " --- [Nuevo usuario conectado] ---";
   io.emit('new_message', msg_res);
 
   //-- Le damos la bienvenida
-  msg_welcom = "   ¡Bienvenido a Chating!   ";
-  socket.emit('new_message', msg_welcom);
+  msg_connection = "   ¡Bienvenido a Chating!   ";
+  socket.emit('new_message', msg_connection);
+  users += 1;
 
   //-- Nuevo cliente
   socket.on('new_client', (nick) => {
-    console.log(nick + " está conectado");
-    users += 1;
+    console.log(">" + nick + "está conectado");
+
     //-- Mensaje del cliente
     socket.on('new_message', (msg) =>{
-      console.log('Mensaje recibido');
-      io.emit('new_message', msg);
+      console.log('Mensaje recibido: ' + msg);
+
+      //-- El servidor, además, responderá a estos comandos:
+      if (msg == '/help'){
+        msg = 'Comandos del servidor: ' + "<br>" +
+              '/help : Devuelve la lista con todos los comandos soportados' + "<br>" +
+              '/list : Devuelve número de usuarios conectados' + "<br>" +
+              '/hello : Devuelve el saludo del servidor' + "<br>" +
+              '/date : Devuelve la fecha';
+
+        io.emit('new_message', msg);
+
+      }else if (msg == '/list'){
+        msg = 'Usuarios conectados: ' + users;
+        io.emit('new_message', msg);
+
+      }else if (msg == '/hello'){
+        msg = '¡HOLA! Espero que tenga una conversación agradable';
+        io.emit('new_message', msg);
+
+      }else if (msg == '/date'){
+        var d = new Date();
+        var yy = d.getFullYear();
+        var mm = d.getMonth();
+        var dd = d.getDate();
+        msg = 'Fecha: ' + dd + '/' + mm + '/' + yy;
+        io.emit('new_message', msg);
+
+      }else{
+        io.emit('new_message', msg);
+      }
     });
 
   });
 
   //-- Usuario desconectado. Imprimir el identificador de su socket
   socket.on('disconnect', function(){
-    console.log("--> Usuario Desconectado.");
+    console.log("--> Usuario Desconectado");
+    msg_desconnect = " ---[Usuario Desconectado] ---";
+    io.emit('new_message', msg_desconnect);
     users -= 1;
   });
 });
