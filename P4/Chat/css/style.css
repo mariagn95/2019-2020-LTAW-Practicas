@@ -1,0 +1,20 @@
+*{
+	box-sizing: border-box;
+}
+
+body{
+	margin: 0;
+  background-color: violet;
+}
+
+h1{
+  text-align: center;
+  font-family: 'Amatic SC', cursive;
+  font-family: 'Shadows Into Light', cursive;
+  padding-top: 25px;
+	padding-bottom: 15px;
+  font-size: 65px;
+}
+.galeria1{
+  margin-left: 70px;
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>maguuChat</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="chat-client.js" defer></script>
+  </head>
+  <body onload="main();">
+    <h1>CHATING</h1>
+    <div class="galeria1">
+      <input id="msg" autocomplete="off" />
+      <button type="button" id="send">SEND</button>
+      <h3>Mensajes recibidos:</h3>
+      <p id="display"></p>
+    </div>
+  </body>
+</html>
