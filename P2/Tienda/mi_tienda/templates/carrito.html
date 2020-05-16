@@ -1,6 +1,7 @@
 {%extends 'base.html'%}
 {%load staticfiles%}
 {%block content%}
+
   <div class="body_carrito">
     <form  action="mostrar_carrito" method="POST">
       {% csrf_token %}
@@ -16,14 +17,15 @@
       </center>
     </form>
     <br>
+
     {{carrito|unordered_list}}
     {%if precio%}
-      <p> Total del pedido : {{precio}} €</p>
+      <p><center> Total del pedido : {{precio}} €</center></p>
     {%endif%}
     <br>
     <br>
     <center>
-      <a class="button_pp" href="/mi_tienda">Página principal</a>
+    <a class="button_pp" href="/mi_tienda">Página principal</a>
     </center>
   </div>
 
