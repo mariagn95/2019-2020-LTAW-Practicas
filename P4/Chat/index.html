@@ -3,24 +3,26 @@
   <head>
     <meta charset="utf-8">
     <title>maguuChat</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <script src="/socket.io/socket.io.js"></script>
     <script src="chat-client.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap" rel="stylesheet">
   </head>
   <body onload="main()">
-
-    <h1>CHATING</h1>
+    <div class="cabecera">
+      <h1>CHATING</h1>
+    </div>
 
     <div class="galeria1">
 
-      <div class="mensajes">
-        <h3>Mensajes recibidos:</h3>
+      <div class="chat-window">
+        <h3>SALA DE CHAT</h3>
         <p id="display"></p>
       </div>
 
-      <div class="enviar">
-        <input id="msg" autocomplete="off" />
+      <div class="chat-send">
+        <input type="text" size="80" style="height:30px" id="msg" autocomplete="off" />
         <button type="button" id="send">SEND</button>
         <button onclick="help()">HELP</button>
         <script>
@@ -30,7 +32,16 @@
         </script>
       </div>
 
+      <div class="git">
+        <a href="https://github.com/mariagn95"><img class="github" src="github.png"></a>
+      </div>
+
+
     </div>
+
+    <footer>
+        <a href="https://github.com/mariagn95"><p> Chat de María Guadaño Nieto</p>
+    </footer>
 
   </body>
 </html>

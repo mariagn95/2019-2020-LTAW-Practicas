@@ -1,6 +1,14 @@
 function main() {
   var nick = prompt("¿Qué Nick quieres para el chat?");
   console.log("Ejecutando cliente JS...");
+  if (nick == null || nick == ""){
+    nick = prompt("Debes utilizar un Nick. Sorry..");
+    if (nick == null || nick == ""){
+        nick = prompt("Si no quieres un Nick.. ¡Ya te lo pongo yo!");
+    }
+    //-- Si no se introduce un Nick se le da el Nick "null".
+
+  }
 
   //-- Obtener los elementos del DOM
   const display = document.getElementById("display");

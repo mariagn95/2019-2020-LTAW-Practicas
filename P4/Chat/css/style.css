@@ -4,18 +4,110 @@
 
 body{
 	margin: 0;
-  background-color: violet;
+  background-color: #f4f1bb;
+	width: 100%;
+}
+a{
+	text-decoration: none;
+	color: black;
+	font-weight: bolder;
 }
 
 h1{
   text-align: center;
   font-family: 'Amatic SC', cursive;
   font-family: 'Shadows Into Light', cursive;
-  padding-top: 25px;
-	padding-bottom: 15px;
+	padding-bottom: 5px;
   font-size: 65px;
 }
+
+button{
+  background-color: #6b97a4;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 15px;
+  cursor: pointer;
+
+}
+
+
+button:hover{
+  background-color: #305661;
+  color: white;
+  box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+}
+
+.cabecera{
+  background-color: #fff87f;
+	margin: auto;
+	padding: 1px;
+	border-radius: 3px;
+}
+
 .galeria1{
-  margin-left: 70px;
-  width: 60%;
+	border: 5px solid black;
+	border-radius: 20px;
+  margin: auto;
+  background-color: #ff637d;
+  border: black;
+	box-sizing: content-box;
+	position: relative;
+	width: 1100px;
+	height: 525px;
+  padding: 1rem;
+	margin-top: 20px;
+	margin-bottom: 20px;
+  border: 2px solid #ccc;
+  text-align: center;
+}
+
+.chat-window{
+  border: 15px solid black;
+  border-radius: 10px;
+	left: 50px;
+	top: 50px;
+  width: 1050px;
+  height: 400px;
+  background-color: #66d7d1; f4f1bb
+  padding: 10px;
+  font-family: 'Orbitron', sans-serif;
+	margin: auto;
+	text-align:left;
+  margin:0 auto;
+  padding:10px;
+  overflow: auto;
+
+}
+
+.chat-send{
+  width: 1050px;
+  height: 65px;
+  background-color: #04080f;
+  padding: 10px 5px 5px 20px;
+	margin: auto;
+	border: 5px solid black;
+	border-radius: 3px;
+}
+
+.git{
+	padding: 10px;
+}
+
+.github{
+	width: 45px;
+	height: auto;
+	margin: 0 auto;
+	margin-top: 5px;
+}
+
+footer{
+	text-align: center;
+	font-family: 'Raleway', sans-serif;
+	padding-top: 20px;
+	padding-bottom: 30px;
+	background-color: #fff87f;
+	border-radius: 3px;
 }

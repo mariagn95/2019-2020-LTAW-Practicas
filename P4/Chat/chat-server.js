@@ -28,23 +28,19 @@ http.listen(PORT, function(){
 app.get('/', (req, res) => {
   let path = __dirname + '/index.html';
   res.sendFile(path);
-  console.log("  ");
-  console.log("Accediendo al index");
-  console.log("  ");
+  console.log("- Página principal solicitada -");
 });
 
 //-- Página del cliente
 app.get('/chat-client.js', (req,res)=>{
   res.sendFile(__dirname + '/chat-client.js');
-  console.log("Fichero de JavaScrip solicitado ");
-  console.log("  ");
+  console.log("- Fichero de JavaScrip solicitado -");
 });
 
 //-- Hoja de estilo
 app.get('/css/style.css', (req,res)=>{
   res.sendFile(__dirname + '/css/style.css');
-  console.log("Fichero de css solicitado ");
-  console.log("  ");
+  console.log("- Fichero de css solicitado -");
 });
 
 
@@ -58,7 +54,7 @@ app.use('/', express.static(__dirname +'/'));
 io.on('connection', function(socket){
 
   //-- Usuario conectado. Imprimir el identificador de su socket
-  console.log('--> Usuario conectado!');
+  console.log('--> ¡Usuario conectado!');
   msg_res = " --- [Nuevo usuario conectado] ---";
   io.emit('new_message', msg_res);
 
@@ -69,7 +65,7 @@ io.on('connection', function(socket){
 
   //-- Nuevo cliente
   socket.on('new_client', (nick) => {
-    console.log(">" + nick + "está conectado");
+    console.log("> " + nick + " está conectado");
 
     //-- Mensaje del cliente
     socket.on('new_message', (msg) =>{
@@ -110,7 +106,7 @@ io.on('connection', function(socket){
 
   //-- Usuario desconectado. Imprimir el identificador de su socket
   socket.on('disconnect', function(){
-    console.log("--> Usuario Desconectado");
+    console.log("--> Usuario Desconectado..");
     msg_desconnect = " ---[Usuario Desconectado] ---";
     io.emit('new_message', msg_desconnect);
     users -= 1;
