@@ -1,0 +1,142 @@
+*{
+  box-sizing: border-box;
+}
+
+
+body {
+  margin: 0;
+}
+
+.cabecera{
+	width: 100%;
+  height: 100px;
+	max-width: 2000px;
+	margin: auto;
+  padding-top: 30px;
+	background-color: #c9e3eb;
+  text-align: center;
+}
+
+.galeria1{
+  background-color: lightblue;
+  font-family: 'Raleway', sans-serif;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  margin-right: 4%;
+}
+
+
+
+.tabla > div:last-child {
+  display: none;
+}
+
+
+form {
+  list-style: none;
+  background: rgba(19, 35, 47, 0.9);
+  padding: 40px;
+  max-width: 600px;
+  margin: 40px auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.8);
+}
+
+
+form:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+h1 {
+  text-align: center;
+  color: #6b97a4;
+  font-weight: 500;
+  margin: 0 0 40px;
+}
+
+.caja {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+
+div.caja input[type=text] {
+  font-size: 22px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 5px 10px;
+  background: none;
+  background-image: none;
+  border: 2px solid #a0b3b0;
+  color: #ffff;
+  border-radius: 0;
+  -webkit-transform: translateY(6px);
+          transform: translateY(6px);
+  left: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  -webkit-backface-visibility: hidden;
+  -webkit-transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+div.caja input[type=text]:focus {
+  outline: 0;
+  border-color: #6b97a4;
+}
+
+div.caja input.highlight {
+  color: #ffffff;
+}
+
+
+.completar {
+  text-align: center;
+}
+
+.completar: active {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+
+.pagprincipal{
+  float: right;
+  padding: 30px 90px;
+}
+
+
+
+div.registrate input, button{
+  background-color: #6b97a4;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 10px 30px;
+  cursor: pointer;
+
+}
+
+div.registrate input:hover{
+  background-color: #305661;
+  color: white;
+  box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+}
+
+
+button:hover{
+  background-color: #305661;
+  color: white;
+  box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+}

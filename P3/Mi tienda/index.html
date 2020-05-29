@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+  	<title>Superhero</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+    <script src="client.js" defer></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<div class="cabecera">
+
+  	<div class="logo">
+  		<img src="img/logo.png">
+  	</div>
+
+    <div class="carrito">
+  			<a href="html/carrito.html"><img src="img/carrito.png"></a>
+	  </div>
+
+  	<img src="img/foto-cabecera.jpg">
+
+</div>
+
+<div class="opciones">
+
+  <div class="buscar">
+    <script>
+      $( function() {
+        var productos = ["THOR", "IRONMAN", "CAPITÁN AMÉRICA", "WONDERWOMAN", "SPIDERMAN", "SUPERMAN", "HULK", "BATMAN"];
+        $( "#buscar" ).autocomplete({
+          source: productos
+        });
+      } );
+    </script>
+    <input id="buscar" type="text" placeholder="Buscar.." name="search">
+    <button id="ver" type="button" name="buscar"></button>
+    <a href="html/registro.html"><button type="submit">Registro</button></a>
+  </div>
+
+</div>
+
+<!------ GALERIA ---->
+
+<div class="galeria1">
+
+  <div class="foto1">
+
+    <img src="img/1.jpg">
+    <div class="tapa">
+      <a href="html/articulo1.html"><h4>THOR</h4></a>
+    </div>
+
+  </div>
+
+  <div class="foto1">
+
+    <img src="img/2.jpg">
+    <div class="tapa">
+       <a href="html/articulo2.html"><h4>IRONMAN</h4></a>
+    </div>
+
+  </div>
+
+  <div class="foto1">
+
+    <img src="img/3.jpg">
+    <div class="tapa">
+       <a href="html/articulo3.html"><h4>CAPITÁN AMÉRICA</h4></a>
+    </div>
+
+  </div>
+
+  <div class="foto1">
+
+    <img src="img/4.jpg">
+    <div class="tapa">
+      <a href="html/articulo4.html"><h4>WONDERWOMAN</h4></a>
+    </div>
+
+  </div>
+
+  <div class="foto1">
+
+    <img src="img/5.jpg">
+    <div class="tapa">
+       <a href="html/articulo5.html"><h4>SPIDERMAN</h4></a>
+    </div>
+
+  </div>
+
+  <div class="foto1">
+
+    <img src="img/6.jpg">
+    <div class="tapa">
+       <a href="html/articulo6.html"><h4>SUPERMAN</h4></a>
+    </div>
+
+  </div>
+
+  <div class="foto1">
+
+    <img src="img/7.jpg">
+    <div class="tapa">
+       <a href="html/articulo7.html"><h4>HULK</h4></a>
+    </div>
+
+  </div>
+
+  <div class="foto1">
+
+    <img src="img/8.jpg">
+    <div class="tapa">
+       <a href="html/articulo8.html"><h4>BATMAN</h4></a>
+    </div>
+
+  </div>
+
+</div>
+
+  <footer>
+        <p>Diseños realizados por Susana Cáceres Nieto</p>
+        <p class="pagina-web">susanacaceresnieto.com</p>
+        <br>
+        <p>Página realizada por María Guadaño Nieto</p>
+        <a href="https://github.com/mariagn95"><img class="github" src="img/github.png"></a>
+  </footer>
+
+
+</body>
+
+</html>
