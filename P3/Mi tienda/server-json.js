@@ -111,8 +111,6 @@ function peticion(req, res) {
       //-- Acceso al recurso JSON
       case "/myquery":
 
-
-
         //-- No hacemos nada con ellos, simplemente los mostramos en
         //-- la consola
         console.log("Parametros: " + params.producto);
@@ -152,7 +150,7 @@ function peticion(req, res) {
             if (cookie){
               for (let name in cookie.split('; ')) {
                 console.log(" ");
-                console.log("--- Cookies ---");
+                console.log("--- Cookies de los datos del registro---");
                 console.log(cookie.split('; ')[name].split('=')[0]);
                 if (cookie.split('; ')[name].split('=')[0] == usuario){
                   registrado = true;
@@ -201,7 +199,7 @@ function peticion(req, res) {
               if (cookie){
                 for (let name in cookie.split('; ')) {
                   console.log(" ");
-                  console.log("--- Cookies ---");
+                  console.log("--- Cookies de los productos seleccionados ---");
                   console.log(cookie.split('; ')[name]);
                   if (cookie.split('; ')[name].split('=')[0] == usuario){
                     //--Convertios el carrito a JSON
@@ -264,7 +262,7 @@ function peticion(req, res) {
             if (cookie){
               for (let name in cookie.split('; ')) {
                 console.log(" ");
-                console.log("--- Cookies ---");
+                console.log("--- Cookies del carrito ---");
                 console.log(cookie.split('; ')[name].split('=')[0]);
                 if (cookie.split('; ')[name].split('=')[0] == params.usuario.replace(/[@]/,"%40")){
                   registrado = true;

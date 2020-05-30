@@ -57,10 +57,24 @@ h1 {
 .caja {
   position: relative;
   margin-bottom: 30px;
+  padding-right: 15px;
 }
 
+#nombre{
+  width: 48%;
+  margin: 0;
+}
 
-div.caja input[type=text], div.caja input[type=password] {
+#apellido{
+  width: 50%;
+  float: right;
+  margin: 0;
+}
+#nombre, #apellido{
+  display: inline-inline-block;
+}
+
+div.caja input[type=text], div.caja input[type=password]{
   font-size: 22px;
   display: block;
   width: 100%;
@@ -73,16 +87,18 @@ div.caja input[type=text], div.caja input[type=password] {
   border-radius: 0;
   -webkit-transform: translateY(6px);
           transform: translateY(6px);
-  left: 13px;
   color: rgba(255, 255, 255, 0.5);
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
   -webkit-backface-visibility: hidden;
   -webkit-transition: border-color 0.25s ease, box-shadow 0.25s ease;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  float: left;
+  margin: 10px;
 }
 
-div.caja input[type=text]:focus {
+
+.caja input[type=text]:focus {
   outline: 0;
   border-color: #6b97a4;
 }
@@ -92,9 +108,12 @@ div.caja input[type=password]:focus {
   border-color: #6b97a4;
 }
 
+
 div.caja input.highlight {
   color: #ffffff;
 }
+
+
 
 
 .completar {
@@ -126,6 +145,7 @@ div.registrate input, button{
   text-decoration: none;
   padding: 10px 30px;
   cursor: pointer;
+  margin: 30px;
 
 }
 
