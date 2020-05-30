@@ -11,8 +11,8 @@ const PUERTO = 8080;
 //-- Por simplicidad lo inicializamos con valores constantes, pero
 //-- en una aplicación real este array se obtendría de la base
 //-- de datos
-let productos = ["THOR", "IRONMAN", "CAPITÁN AMÉRICA", "WONDERWOMAN", "SPIDERMAN", "SUPERMAN", "HULK", "BATMAN"];
-
+const productos = ["THOR", "IRONMAN", "CAPITÁN AMÉRICA", "WONDERWOMAN", "SPIDERMAN", "SUPERMAN", "HULK", "BATMAN"];
+const precios = [45.0, 70.0, 55.0, 60.0, 40.0, 65.0, 50.0, 80.0];
 //-- Funcion para atender a una Peticion
 //-- req: Mensaje de solicitud
 //-- res: Mensaje de respuesta
@@ -40,14 +40,14 @@ function peticion(req, res) {
       break;
 
     //-- Paginas de los productos
-    case "/html/articulo1.html":
-    case "/html/articulo2.html":
-    case "/html/articulo3.html":
-    case "/html/articulo4.html":
-    case "/html/articulo5.html":
-    case "/html/articulo6.html":
-    case "/html/articulo7.html":
-    case "/html/articulo8.html":
+    case "/html/THOR.html":
+    case "/html/BATMAN.html":
+    case "/html/CAPITANAMERICA.html":
+    case "/html/HULK.html":
+    case "/html/IRONMAN.html":
+    case "/html/SPIDERMAN.html":
+    case "/html/WONDERWOMAN.html":
+    case "/html/SUPERMAN.html":
     case "/html/registro.html":
     case "/html/carrito.html":
       fs.readFile("." + q.pathname, (err, data) => {
@@ -157,12 +157,10 @@ function peticion(req, res) {
                 }
               }
             }
-
             //-- Guardamos la cookie
             if (!registrado) {
-              res.setHeader('Set-Cookie', usuario + "=" + nombre + "&" + apellido + "&[]");
+              res.setHeader('Set-Cookie', usuario + "=" + nombre + "&" + apellido + "&[]&0.0");
             }
-
             //--Volvemos a la página de inicio
             fs.readFile("./index.html", (err, data) => {
               //-- Generar el mensaje de respuesta
@@ -176,6 +174,31 @@ function peticion(req, res) {
           });
         }
         break
+
+        //-- Buscar producto
+        case "/buscar":
+          if (req.method == "POST"){
+            console.log(" ");
+            console.log("--- Producto buscado ---");
+            //--chunk lee los datos registrados
+            req.on('data', chunk =>{
+              data = chunk.toString()
+              console.log("Producto: " + data.split('=')[1]);
+              let filename = data.split('=')[1].replace("+","") + ".html";
+              //--Volvemos a la página de inicio
+              fs.readFile("./html/"+ filename, (err, data) => {
+                //-- Generar el mensaje de respuesta
+                res.writeHead(200, {'Content-Type': 'text/html'});
+                res.write(data);
+                res.end();
+                return
+              });
+              return
+            });
+          }
+          break;
+
+
 
         //-- Registro
         case "/seleccionados":
@@ -191,9 +214,10 @@ function peticion(req, res) {
 
               let usuario = data.split('&')[0].split('=')[1];
               let nombre_producto = data.split('&')[1].split('=')[0];
-              let cantidad = parseInt(data.split('&')[1].split('=')[1]);
+              let cantidad = parseFloat(data.split('&')[1].split('=')[1]);
               let registrado = false;
               let carrito = [];
+              let precio = 0.0;
               let nombre = "";
               let apellido = "";
               if (cookie){
@@ -204,6 +228,7 @@ function peticion(req, res) {
                   if (cookie.split('; ')[name].split('=')[0] == usuario){
                     //--Convertios el carrito a JSON
                     carrito = JSON.parse(cookie.split('; ')[name].split('&')[2]);
+                    precio = parseFloat(cookie.split('; ')[name].split('&')[3]);
                     //--Sacamos nombre y apellido
                     nombre = cookie.split('; ')[name].split('&')[0].split('=')[1];
                     apellido = cookie.split('; ')[name].split('&')[1];
@@ -219,6 +244,7 @@ function peticion(req, res) {
 
                   if (carrito[i][0] == nombre_producto) {
                     carrito[i][1] += cantidad;
+                    //--Coge el precio segun su posicion
                     comprado = true;
                   }
                 }
@@ -233,10 +259,14 @@ function peticion(req, res) {
                 filename = "./html/registro.html";
 
               }else {
+                for (var j = 0; j < productos.length; j++) {
+                  if (productos[j] == nombre_producto) {
+                      precio += cantidad*precios[j];
+                  }
+                }
                 filename = "./index.html";
-                res.setHeader('Set-Cookie', usuario + "=" + nombre + "&" + apellido + "&" + JSON.stringify(carrito))
+                res.setHeader('Set-Cookie', usuario + "=" + nombre + "&" + apellido + "&" + JSON.stringify(carrito) + "&" + precio.toString())
               }
-
               //--Volvemos a la página de inicio
               fs.readFile(filename, (err, data) => {
                 //-- Generar el mensaje de respuesta
@@ -248,7 +278,6 @@ function peticion(req, res) {
 
               return
             });
-
           }
           break
 
@@ -257,6 +286,7 @@ function peticion(req, res) {
             console.log("Parametros: " + params.usuario);
 
             let registrado = false;
+            let precio = 0.0;
             let carrito = "";
             //console.log("Cookie: " + cookie.split('; '));
             if (cookie){
@@ -268,13 +298,14 @@ function peticion(req, res) {
                   registrado = true;
                   //--Convertios el carrito a JSON
                   carrito = cookie.split('; ')[name].split('&')[2];
+                  precio = parseFloat(cookie.split('; ')[name].split('&')[3]);
                 }
               }
             }
 
             if (registrado) {
               res.setHeader('Content-Type', 'application/json')
-              res.write(carrito);
+            res.write(JSON.stringify([JSON.parse(carrito), precio]));
               res.end();
               return
             }

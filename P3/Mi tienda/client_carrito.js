@@ -1,6 +1,8 @@
 const usuario = document.getElementById('usuario');
 const factura = document.getElementById('factura');
 const buscar = document.getElementById('buscar');
+const total = document.getElementById('precio');
+
 
 
 
@@ -16,12 +18,15 @@ buscar.onclick = ()=>{
      //-- Petición enviada y recibida. Todo OK!
      if (m.readyState==4 && m.status==200){
        //-- La respuesta es un objeto JSON
-       let carrito = JSON.parse(m.responseText)
+       console.log(m.responseText)
+       let carrito = JSON.parse(m.responseText)[0]
+       let precio = JSON.parse(m.responseText)[1]
        console.log(carrito);
        factura.innerHTML = "";
        for (var i = 0; i < carrito.length; i++) {
-         factura.innerHTML += carrito[i][0] + " " + carrito[i][1] + " unidad/es";
+         factura.innerHTML += carrito[i][0] + " " + carrito[i][1] + " unidad/es<br>";
        }
+       total.innerHTML = precio.toString();
      }
    }
    //-- Enviar la petición!

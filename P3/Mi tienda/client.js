@@ -13,7 +13,9 @@ const apellido = document.getElementById('apellido');
 const usuario = document.getElementById('usuario');
 
 
-
+buscar.onkeyup = ()=>{
+  ver.onclick = "location.href='" + ver.value.replace(" ", "") + ".html'";
+}
 //-- Cuando el usuario aprieta el botón de ver los productos
 ver.onclick = ()=>{
   //-- Crear objeto para hacer peticiones AJAX

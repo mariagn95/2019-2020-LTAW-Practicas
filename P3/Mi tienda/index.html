@@ -34,16 +34,21 @@
 <div class="opciones">
 
   <div class="buscar">
-    <form action="/buscar" method="POST">
+    <form id="formulario" action="/buscar" method="POST">
       <script>
         $( function() {
-          var productos = ["THOR", "IRONMAN", "CAPITÁN AMÉRICA", "WONDERWOMAN", "SPIDERMAN", "SUPERMAN", "HULK", "BATMAN"];
+          var productos = ["THOR", "IRONMAN", "CAPITAN AMERICA", "WONDERWOMAN", "SPIDERMAN", "SUPERMAN", "HULK", "BATMAN"];
           $( "#buscar" ).autocomplete({
             source: productos
           });
-        } );
+          $("#ver").click(function(){
+            $("#formulario").submit();
+          });
+        });
+
       </script>
-      <input id="buscar" type="text" placeholder="Buscar.." name="search">
+      <input id="buscar" type="text" placeholder="Buscar.." name="buscar">
+      <button id="ver" type="button" name="button">BUSCAR</button>
     </form>
     <a href="html/registro.html"><button type="submit">Registro</button></a>
   </div>
@@ -58,7 +63,7 @@
 
     <img src="img/1.jpg">
     <div class="tapa">
-      <a href="html/articulo1.html"><h4>THOR</h4></a>
+      <a href="html/THOR.html"><h4>THOR</h4></a>
     </div>
 
   </div>
@@ -67,7 +72,7 @@
 
     <img src="img/2.jpg">
     <div class="tapa">
-       <a href="html/articulo2.html"><h4>IRONMAN</h4></a>
+       <a href="html/IRONMAN.html"><h4>IRONMAN</h4></a>
     </div>
 
   </div>
@@ -76,7 +81,7 @@
 
     <img src="img/3.jpg">
     <div class="tapa">
-       <a href="html/articulo3.html"><h4>CAPITÁN AMÉRICA</h4></a>
+       <a href="html/CAPITANAMERICA.html"><h4>CAPITÁN AMÉRICA</h4></a>
     </div>
 
   </div>
@@ -85,7 +90,7 @@
 
     <img src="img/4.jpg">
     <div class="tapa">
-      <a href="html/articulo4.html"><h4>WONDERWOMAN</h4></a>
+      <a href="html/WONDERWOMAN.html"><h4>WONDERWOMAN</h4></a>
     </div>
 
   </div>
@@ -94,7 +99,7 @@
 
     <img src="img/5.jpg">
     <div class="tapa">
-       <a href="html/articulo5.html"><h4>SPIDERMAN</h4></a>
+       <a href="html/SPIDERMAN.html"><h4>SPIDERMAN</h4></a>
     </div>
 
   </div>
@@ -103,7 +108,7 @@
 
     <img src="img/6.jpg">
     <div class="tapa">
-       <a href="html/articulo6.html"><h4>SUPERMAN</h4></a>
+       <a href="html/SUPERMAN.html"><h4>SUPERMAN</h4></a>
     </div>
 
   </div>
@@ -112,7 +117,7 @@
 
     <img src="img/7.jpg">
     <div class="tapa">
-       <a href="html/articulo7.html"><h4>HULK</h4></a>
+       <a href="html/HULK.html"><h4>HULK</h4></a>
     </div>
 
   </div>
@@ -121,7 +126,7 @@
 
     <img src="img/8.jpg">
     <div class="tapa">
-       <a href="html/articulo8.html"><h4>BATMAN</h4></a>
+       <a href="html/BATMAN.html"><h4>BATMAN</h4></a>
     </div>
 
   </div>
