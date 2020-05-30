@@ -10,7 +10,7 @@ const buscar = document.getElementById('buscar');
 //-- Registro
 const nombre = document.getElementById('nombre');
 const apellido = document.getElementById('apellido');
-const email = document.getElementById('email');
+const usuario = document.getElementById('usuario');
 
 
 

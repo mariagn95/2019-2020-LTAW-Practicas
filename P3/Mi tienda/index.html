@@ -34,16 +34,17 @@
 <div class="opciones">
 
   <div class="buscar">
-    <script>
-      $( function() {
-        var productos = ["THOR", "IRONMAN", "CAPITÁN AMÉRICA", "WONDERWOMAN", "SPIDERMAN", "SUPERMAN", "HULK", "BATMAN"];
-        $( "#buscar" ).autocomplete({
-          source: productos
-        });
-      } );
-    </script>
-    <input id="buscar" type="text" placeholder="Buscar.." name="search">
-    <button id="ver" type="button" name="buscar"></button>
+    <form action="/buscar" method="POST">
+      <script>
+        $( function() {
+          var productos = ["THOR", "IRONMAN", "CAPITÁN AMÉRICA", "WONDERWOMAN", "SPIDERMAN", "SUPERMAN", "HULK", "BATMAN"];
+          $( "#buscar" ).autocomplete({
+            source: productos
+          });
+        } );
+      </script>
+      <input id="buscar" type="text" placeholder="Buscar.." name="search">
+    </form>
     <a href="html/registro.html"><button type="submit">Registro</button></a>
   </div>
 

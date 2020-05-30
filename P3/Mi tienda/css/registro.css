@@ -28,11 +28,6 @@ body {
 
 
 
-.tabla > div:last-child {
-  display: none;
-}
-
-
 form {
   list-style: none;
   background: rgba(19, 35, 47, 0.9);
@@ -61,11 +56,11 @@ h1 {
 
 .caja {
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 
-div.caja input[type=text] {
+div.caja input[type=text], div.caja input[type=password] {
   font-size: 22px;
   display: block;
   width: 100%;
@@ -92,6 +87,11 @@ div.caja input[type=text]:focus {
   border-color: #6b97a4;
 }
 
+div.caja input[type=password]:focus {
+  outline: 0;
+  border-color: #6b97a4;
+}
+
 div.caja input.highlight {
   color: #ffffff;
 }
@@ -112,6 +112,7 @@ div.caja input.highlight {
   float: right;
   padding: 30px 90px;
 }
+
 
 
 

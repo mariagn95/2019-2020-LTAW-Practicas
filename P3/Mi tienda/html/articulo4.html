@@ -20,7 +20,23 @@
         <h1> WONDERWOMAN </h1>
         <img src="../img/4.jpg" alt="Wonderwoman" width="400" height="600">
         <p>Recreacción de Wonderwoman</p>
-        <a href="../index.html"><button>Página principal</button></a>
+
+
+        <div>
+          <form  action="/seleccionados" method="POST">
+            <label>Usuario: <label>
+            <input name="usuario" type="text" required>
+
+            <label>Número de productos: <label>
+            <input type="number" name="WONDERWOMAN" value="1" min="1" required/>
+            <input class="boton" type="submit" value="AÑADIR AL CARRITO"/>
+          </form>
+        </div>
+
+        <div class="volver">
+            <a href="../index.html"><button>Página principal</button></a>
+        </div>
+
       </center>
     </div>
   </body>

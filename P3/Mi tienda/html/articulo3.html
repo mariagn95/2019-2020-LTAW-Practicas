@@ -17,10 +17,26 @@
 
     <div class="galeria1">
       <center>
-        <h1> CAPITÁN AMERICA </h1>
+        <h1> CAPITÁN AMÉRICA </h1>
         <img src="../img/3.jpg" alt="Capitanamerica" width="400" height="600">
         <p>Recreacción del Capitán América</p>
-        <a href="../index.html"><button>Página principal</button></a>
+
+
+        <div>
+          <form  action="/seleccionados" method="POST">
+            <label>Usuario: <label>
+            <input name="usuario" type="text" required>
+
+            <label>Número de productos: <label>
+            <input type="number" name="CAPITAN-AMERICA" value="1" min="1" required/>
+            <input class="boton" type="submit" value="AÑADIR AL CARRITO"/>
+          </form>
+        </div>
+
+        <div class="volver">
+            <a href="../index.html"><button>Página principal</button></a>
+        </div>
+
       </center>
     </div>
   </body>

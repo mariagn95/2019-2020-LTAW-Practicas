@@ -140,10 +140,10 @@ function peticion(req, res) {
             data = chunk.toString()
             console.log("Nombre: " + data.split('&')[0].split('=')[1]);
             console.log("Apellido: " + data.split('&')[1].split('=')[1]);
-            console.log("Email: " + data.split('&')[2].split('=')[1]);
+            console.log("Usuario: " + data.split('&')[2].split('=')[1]);
 
             //--Cookie
-            let email = data.split('&')[2].split('=')[1];
+            let usuario = data.split('&')[2].split('=')[1];
             let nombre = data.split('&')[0].split('=')[1];
             let apellido = data.split('&')[1].split('=')[1];
             let registrado = false;
@@ -154,7 +154,7 @@ function peticion(req, res) {
                 console.log(" ");
                 console.log("--- Cookies ---");
                 console.log(cookie.split('; ')[name].split('=')[0]);
-                if (cookie.split('; ')[name].split('=')[0] == email){
+                if (cookie.split('; ')[name].split('=')[0] == usuario){
                   registrado = true;
                 }
               }
@@ -162,7 +162,7 @@ function peticion(req, res) {
 
             //-- Guardamos la cookie
             if (!registrado) {
-              res.setHeader('Set-Cookie', email + "=" + nombre + "&" + apellido + "&[]");
+              res.setHeader('Set-Cookie', usuario + "=" + nombre + "&" + apellido + "&[]");
             }
 
             //--Volvemos a la página de inicio
@@ -187,11 +187,11 @@ function peticion(req, res) {
             //--chunk lee los datos registrados
             req.on('data', chunk =>{
               data = chunk.toString()
-              console.log("Email: " + data.split('&')[0].split('=')[1]);
+              console.log("Usuario: " + data.split('&')[0].split('=')[1]);
               console.log("Nombre del producto: " + data.split('&')[1].split('=')[0]);
               console.log("Cantidad: " + data.split('&')[1].split('=')[1]);
 
-              let email = data.split('&')[0].split('=')[1];
+              let usuario = data.split('&')[0].split('=')[1];
               let nombre_producto = data.split('&')[1].split('=')[0];
               let cantidad = parseInt(data.split('&')[1].split('=')[1]);
               let registrado = false;
@@ -203,7 +203,7 @@ function peticion(req, res) {
                   console.log(" ");
                   console.log("--- Cookies ---");
                   console.log(cookie.split('; ')[name]);
-                  if (cookie.split('; ')[name].split('=')[0] == email){
+                  if (cookie.split('; ')[name].split('=')[0] == usuario){
                     //--Convertios el carrito a JSON
                     carrito = JSON.parse(cookie.split('; ')[name].split('&')[2]);
                     //--Sacamos nombre y apellido
@@ -236,7 +236,7 @@ function peticion(req, res) {
 
               }else {
                 filename = "./index.html";
-                res.setHeader('Set-Cookie', email + "=" + nombre + "&" + apellido + "&" + JSON.stringify(carrito))
+                res.setHeader('Set-Cookie', usuario + "=" + nombre + "&" + apellido + "&" + JSON.stringify(carrito))
               }
 
               //--Volvemos a la página de inicio
@@ -254,13 +254,9 @@ function peticion(req, res) {
           }
           break
 
-          //-- Acceso al recurso JSON
+
           case "/carrito":
-
-
-            //-- No hacemos nada con ellos, simplemente los mostramos en
-            //-- la consola
-            console.log("Parametros: " + params.email);
+            console.log("Parametros: " + params.usuario);
 
             let registrado = false;
             let carrito = "";
@@ -270,7 +266,7 @@ function peticion(req, res) {
                 console.log(" ");
                 console.log("--- Cookies ---");
                 console.log(cookie.split('; ')[name].split('=')[0]);
-                if (cookie.split('; ')[name].split('=')[0] == params.email.replace(/[@]/,"%40")){
+                if (cookie.split('; ')[name].split('=')[0] == params.usuario.replace(/[@]/,"%40")){
                   registrado = true;
                   //--Convertios el carrito a JSON
                   carrito = cookie.split('; ')[name].split('&')[2];
