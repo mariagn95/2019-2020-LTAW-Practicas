@@ -1,0 +1,141 @@
+*{
+	box-sizing: border-box;
+}
+
+body{
+	margin: 0;
+	font-family: 'Raleway', sans-serif;
+}
+
+h1, h3{
+	font-family: 'Raleway', sans-serif;
+
+}
+
+img{
+	width: 100px;
+	height: auto;
+
+}
+
+
+.factura{
+	margin: 40px;
+	border-radius: 10px;
+	padding: 10px;
+	border: 10px solid black;
+}
+
+
+
+form {
+  list-style: none;
+  background: rgba(21, 118, 101, 0.9);
+  padding: 40px;
+  max-width: 800px;
+  margin: 40px auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px 4px rgba(31, 108, 95, 0.8);
+}
+
+
+form:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+
+button{
+  background-color: #6b97a4;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 10px 30px;
+  cursor: pointer;
+
+}
+
+button:hover{
+  background-color: #305661;
+  color: white;
+  box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+}
+
+.caja {
+  position: relative;
+  margin: 0px;
+  padding-right: 15px;
+}
+
+div.caja input[type=text], div.caja input[type=tel]{
+  font-size: 22px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 5px 10px;
+  background: none;
+  background-image: none;
+  border: 2px solid #a0b3b0;
+  color: #ffff;
+  border-radius: 0;
+  -webkit-transform: translateY(6px);
+          transform: translateY(6px);
+  color: rgba(255, 255, 255, 0.5);
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  -webkit-backface-visibility: hidden;
+  -webkit-transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  float: left;
+  margin: 10px;
+}
+
+
+.caja input[type=text]:focus {
+  outline: 0;
+  border-color: #6b97a4;
+}
+
+div.caja input[type=password]:focus {
+  outline: 0;
+  border-color: #6b97a4;
+}
+
+
+div.caja input.highlight {
+  color: #ffffff;
+}
+
+
+#nombre, #cpostal{
+  width: 48%;
+  margin: 0;
+}
+
+#apellido, #telefono{
+  width: 50%;
+  float: right;
+  margin: 0;
+}
+#nombre, #apellido, #cpostal, #telefono{
+  display: inline-inline-block;
+}
+
+
+.pago{
+	margin: 20px;
+	text-align: left;
+	padding: 20px;
+}
+
+
+.fotopago{
+	width: 30%;
+	float: right;
+}

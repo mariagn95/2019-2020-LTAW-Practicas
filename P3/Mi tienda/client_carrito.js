@@ -8,12 +8,6 @@ const finalizar = document.getElementById('finalizar');
 function init(){
   $(function(){
     $('#compra').hide();
-    $('#metodo-pago').hide();
-  });
-}
-finalizar.onclick = ()=>{
-  $(function(){
-    $('#metodo-pago').show();
   });
 }
 

@@ -50,6 +50,8 @@ function peticion(req, res) {
     case "/html/SUPERMAN.html":
     case "/html/registro.html":
     case "/html/carrito.html":
+    case "/html/pago.html":
+    case "/html/factura.html":
       fs.readFile("." + q.pathname, (err, data) => {
         //-- Generar el mensaje de respuesta
         res.writeHead(200, {'Content-Type': 'text/html'});
@@ -64,6 +66,8 @@ function peticion(req, res) {
       case "/css/articulo.css":
       case "/css/registro.css":
       case "/css/carrito.css":
+      case "/css/pago.css":
+      case "/css/factura.css":
         fs.readFile("." + q.pathname, (err, data) => {
           //-- Generar el mensaje de respuesta
           res.writeHead(200, {'Content-Type': 'text/css'});
@@ -295,7 +299,7 @@ function peticion(req, res) {
                 console.log(" ");
                 console.log("--- Cookies del carrito ---");
                 console.log(cookie.split('; ')[name].split('=')[0]);
-                if (cookie.split('; ')[name].split('=')[0] == params.usuario.replace(/[@]/,"%40")){
+                if (cookie.split('; ')[name].split('=')[0] == params.usuario){
                   registrado = true;
                   //--Convertios el carrito a JSON
                   carrito = cookie.split('; ')[name].split('&')[2];
@@ -304,14 +308,87 @@ function peticion(req, res) {
               }
             }
 
+
             if (registrado) {
               res.setHeader('Content-Type', 'application/json')
-            res.write(JSON.stringify([JSON.parse(carrito), precio]));
+              res.write(JSON.stringify([JSON.parse(carrito), precio]));
               res.end();
               return
             }
 
             break
+
+            //-- Factura
+            case "/pagar":
+              if (req.method == "POST"){
+                console.log(" ");
+                console.log("--- Datos del formulario de pago ---");
+                //--chunk lee los datos registrados
+                req.on('data', chunk =>{
+                  data = chunk.toString()
+                  console.log(data)
+                  console.log("Nombre: " + data.split('&')[0].split('=')[1]);
+                  console.log("Apellido: " + data.split('&')[1].split('=')[1]);
+                  console.log("Usuario: " + data.split('&')[2].split('=')[1]);
+                  console.log("Email: " + data.split('&')[3].split('=')[1]);
+                  console.log("Dirección de envio: " + data.split('&')[4].split('=')[1]);
+                  console.log("Código postal: " + data.split('&')[5].split('=')[1]);
+                  console.log("Telefono: " + data.split('&')[6].split('=')[1]);
+                  console.log("Método de pago: " + data.split('&')[7].split('=')[1]);
+
+                  let nombre = data.split('&')[0].split('=')[1];
+                  let apellido = data.split('&')[1].split('=')[1];
+                  let usuario = data.split('&')[2].split('=')[1]
+                  let nombre_producto = data.split('&')[1].split('=')[0];
+                  let cantidad = parseFloat(data.split('&')[1].split('=')[1]);
+                  let registrado = false;
+                  let carrito = [];
+                  let precio = 0.0;
+                  if (cookie){
+                    for (let name in cookie.split('; ')) {
+                      console.log(" ");
+                      console.log("--- Cookies de los productos seleccionados ---");
+
+                      console.log(cookie);
+                      if (cookie.split('; ')[name].split('=')[0] == usuario){
+                        //--Convertios el carrito a JSON
+                        carrito = JSON.parse(cookie.split('; ')[name].split('&')[2]);
+                        precio = parseFloat(cookie.split('; ')[name].split('&')[3]);
+                        //--Sacamos nombre y apellido
+                        nombre = cookie.split('; ')[name].split('&')[0].split('=')[1];
+                        apellido = cookie.split('; ')[name].split('&')[1];
+                        registrado = true;
+                        filename = "./html/factura.html";
+                      }
+                    }
+                  }
+                  let comprado = false;
+                  //--Si el carrit  no esta vacio buscamos producto
+                  if (carrito != []){
+                    for (var i = 0; i < carrito.length; i++) {
+                      //-Nombre del producto : carrito[i][0];
+
+                      if (carrito[i][0] == nombre_producto) {
+                        carrito[i][1] += cantidad;
+                        //--Coge el precio segun su posicion
+                        comprado = true;
+                      }
+                    }
+                  }
+                  //--Volvemos a la página de inicio
+                  fs.readFile(filename, (err, data) => {
+                    //-- Generar el mensaje de respuesta
+                    res.writeHead(200, {'Content-Type': 'text/html'});
+                    res.write(data);
+                    res.end();
+                    return
+                  });
+
+                  return
+                });
+              }
+              break
+
 
     //-- Se intenta acceder a un recurso que no existe
     default:
