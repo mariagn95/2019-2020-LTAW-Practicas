@@ -74,7 +74,7 @@ h1 {
   display: inline-inline-block;
 }
 
-div.caja input[type=text], div.caja input[type=password]{
+div.caja input[type=text], div.caja input[type=password], div.caja input[type=email]{
   font-size: 22px;
   display: block;
   width: 100%;
@@ -99,6 +99,11 @@ div.caja input[type=text], div.caja input[type=password]{
 
 
 .caja input[type=text]:focus {
+  outline: 0;
+  border-color: #6b97a4;
+}
+
+div.caja input[type=email]:focus {
   outline: 0;
   border-color: #6b97a4;
 }

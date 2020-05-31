@@ -12,25 +12,12 @@ h1, h3{
 
 }
 
-img{
-	width: 100px;
-	height: auto;
-
-}
-
-
-.factura{
-	margin: 40px;
-	border-radius: 10px;
-	padding: 10px;
-	border: 10px solid black;
-}
 
 
 
 form {
   list-style: none;
-  background: rgba(21, 118, 101, 0.9);
+  background: rgba(21, 99, 118, 0.9);
   padding: 40px;
   max-width: 800px;
   margin: 40px auto;
@@ -48,29 +35,52 @@ form:after {
 
 
 
-button{
-  background-color: #6b97a4;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  text-align: center;
-  font-weight: bold;
-  text-decoration: none;
-  padding: 10px 30px;
-  cursor: pointer;
-
+.completar{
+	margin-bottom: 150px;
 }
-
-button:hover{
-  background-color: #305661;
-  color: white;
-  box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
-}
-
 .caja {
-  position: relative;
   margin: 0px;
   padding-right: 15px;
+	text-align: left;
+}
+
+#nombre{
+  width: 50%;
+	display: block;
+	float: left;
+}
+
+#apellido{
+  width: 50%;
+	display: block;
+  float: left;
+}
+
+#apellido::after{
+  clear: both;
+}
+
+#cpostal{
+  width: 50%;
+	display: block;
+	float: left;
+}
+
+#telefono{
+  width: 50%;
+	display: block;
+  float: left;
+}
+#nombre, #apellido, #cpostal, #telefono{
+  display: inline-inline-block;
+}
+
+#cpostal::after{
+  clear: both;
+}
+
+#telefono::after{
+  clear: both;
 }
 
 div.caja input[type=text], div.caja input[type=tel]{
@@ -94,6 +104,7 @@ div.caja input[type=text], div.caja input[type=tel]{
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
   float: left;
   margin: 10px;
+	margin-bottom: 30px;
 }
 
 
@@ -102,7 +113,7 @@ div.caja input[type=text], div.caja input[type=tel]{
   border-color: #6b97a4;
 }
 
-div.caja input[type=password]:focus {
+div.caja input[type=tel]:focus {
   outline: 0;
   border-color: #6b97a4;
 }
@@ -113,29 +124,57 @@ div.caja input.highlight {
 }
 
 
-#nombre, #cpostal{
-  width: 48%;
-  margin: 0;
-}
 
-#apellido, #telefono{
-  width: 50%;
-  float: right;
-  margin: 0;
-}
-#nombre, #apellido, #cpostal, #telefono{
-  display: inline-inline-block;
+.formapago{
+	width: 80%;
+	float: left;
+	margin-bottom: 80px;
 }
 
 
-.pago{
-	margin: 20px;
-	text-align: left;
-	padding: 20px;
-}
 
 
 .fotopago{
-	width: 30%;
-	float: right;
+	width: 20%;
+	margin-top: 25px;
+	float: left;
+}
+
+.fotopago::after{
+	clear: both;
+}
+
+
+div.boton-comprar button{
+	background-color: #000;
+  border: none;
+	border-radius: 0;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 15px 30px;
+  cursor: pointer;
+	margin: 50px;
+	text-align: center;
+}
+
+button{
+  background-color: #6b97a4;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 10px 30px;
+  cursor: pointer;
+	margin-bottom: 50px;
+
+}
+
+button:hover{
+  background-color: #305661;
+  color: white;
+  box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
 }

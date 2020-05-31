@@ -321,6 +321,7 @@ function peticion(req, res) {
             //-- Factura
             case "/pagar":
               if (req.method == "POST"){
+                var pedido_final = ``;
                 console.log(" ");
                 console.log("--- Datos del formulario de pago ---");
                 //--chunk lee los datos registrados
@@ -338,11 +339,16 @@ function peticion(req, res) {
 
                   let nombre = data.split('&')[0].split('=')[1];
                   let apellido = data.split('&')[1].split('=')[1];
-                  let usuario = data.split('&')[2].split('=')[1]
-                  let nombre_producto = data.split('&')[1].split('=')[0];
-                  let cantidad = parseFloat(data.split('&')[1].split('=')[1]);
+                  let usuario = data.split('&')[2].split('=')[1];
+                  let email = data.split('&')[3].split('=')[1];
+                  let direccion = data.split('&')[4].split('=')[1];
+                  let cpostal = data.split('&')[5].split('=')[1];
+                  let telefono = data.split('&')[6].split('=')[1];
+                  let mpago = data.split('&')[7].split('=')[1];
+
                   let registrado = false;
                   let carrito = [];
+                  let producto = "";
                   let precio = 0.0;
                   if (cookie){
                     for (let name in cookie.split('; ')) {
@@ -351,6 +357,8 @@ function peticion(req, res) {
 
                       console.log(cookie);
                       if (cookie.split('; ')[name].split('=')[0] == usuario){
+                        console.log(cookie)
+                        console.log('eeyyyy')
                         //--Convertios el carrito a JSON
                         carrito = JSON.parse(cookie.split('; ')[name].split('&')[2]);
                         precio = parseFloat(cookie.split('; ')[name].split('&')[3]);
@@ -358,35 +366,68 @@ function peticion(req, res) {
                         nombre = cookie.split('; ')[name].split('&')[0].split('=')[1];
                         apellido = cookie.split('; ')[name].split('&')[1];
                         registrado = true;
-                        filename = "./html/factura.html";
-                      }
-                    }
-                  }
-                  let comprado = false;
-                  //--Si el carrit  no esta vacio buscamos producto
-                  if (carrito != []){
-                    for (var i = 0; i < carrito.length; i++) {
-                      //-Nombre del producto : carrito[i][0];
 
-                      if (carrito[i][0] == nombre_producto) {
-                        carrito[i][1] += cantidad;
-                        //--Coge el precio segun su posicion
-                        comprado = true;
+                        pedido_final =`
+                          <!DOCTYPE html>
+                          <html lang="es" dir="ltr">
+                            <head>
+                              <meta charset="utf-8">
+                              <title> Factura </title>
+                              <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+                              <link rel="stylesheet" href="../css/factura.css">
+                            </head>
+                            <body>
+                              <div class="cabecera">
+
+                                  <div class="logo">
+                                    <center>
+                                      <img src="../img/logo.png">
+                                    </center>
+                                  </div>
+
+                              </div>
+                              <p><center> FACTURA </center></p>
+                              <p>`
+
+                              pedido_final += "Dtatos del Cliente: " + "<br>"
+                                      "Nombre: " + nombre + "<br>"
+                                      "Apellido: " + apellido + "<br>"
+                                      "Usuario: " + usuario + "<br>"
+                                      "Correo electrónico: " + email + "<br>"
+                                      "Dirección: " + direccion + "<br>"
+                                      "Código postal: " + cpostal + "<br>"
+                                      "Telefono: " + telefono + "<br>"
+                                      "Método de pago utilizado: " + mpago + "<br>"
+                                      "<br>"
+                                      "Productos comprados:" + productos + "<br>"
+                                      "Precio total: " + precio + "<br>"
+                                pedido_final +=
+
+
+
+                              `</p>
+                              <center>
+                              <a href="../index.html"><button>Seguir comprando</button></a>
+                              </center>
+
+                            </body>
+
+                          </html>`
                       }
                     }
                   }
-                  //--Volvemos a la página de inicio
-                  fs.readFile(filename, (err, data) => {
-                    //-- Generar el mensaje de respuesta
-                    res.writeHead(200, {'Content-Type': 'text/html'});
-                    res.write(data);
+                  res.statusCode = 200;
+                  });
+                  req.on ('end', () =>{
+                    res.setHeader('Content-Type', 'text/html')
+                    res.write(pedido_final);
                     res.end();
-                    return
                   });
 
                   return
-                });
               }
+
+
               break
 
 

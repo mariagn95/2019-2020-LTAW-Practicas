@@ -35,13 +35,25 @@ a{
 }
 
 .pedido{
-	margin: auto;
-	border-radius: 10px;
+	margin: 50px auto;
+	border-radius: 5px;
+	background-color:  #a2c9d4;
 	padding: 10px;
-	border: 10px solid black;
+	border: 3px solid #6b97a4;
+	width: 45%;
 }
 
-
+#fin-pedido button{
+	background-color: #000;
+  border: none;
+	border-radius: 0;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 15px 30px;
+  cursor: pointer;
+}
 
 
 button{

@@ -55,32 +55,10 @@ a{
 	align-content: right;
 }
 
-div.buscar button{
-  background-color: #6b97a4;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  font-weight: bold;
-  text-decoration: none;
-  padding: 10px 5px;
-  cursor: pointer;
-	float: left;
-	display: block;
-	margin-left: 50px;
-}
-
-
-div.buscar button:hover{
-  background-color: #305661;
-  color: white;
-  box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
-}
-
 div.buscar input[type=text] {
   font-size: 22px;
   display: block;
   width: 25%;
-  height: 50%;
   background: none;
   background-image: none;
   border: 2px solid #a0b3b0;
@@ -92,7 +70,6 @@ div.buscar input[type=text] {
   -webkit-backface-visibility: hidden;
   -webkit-transition: border-color 0.25s ease, box-shadow 0.25s ease;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
-	margin-left: 60%;
 	float: left;
 }
 
@@ -106,7 +83,53 @@ div.buscar input.highlight {
 }
 
 
-div.buscar::after{
+div.buscar button {
+  background-color: #6b97a4;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px 8px;
+  cursor: pointer;
+	float: left;
+	display: block;
+}
+
+
+div.buscar button:hover{
+  background-color: #305661;
+  color: white;
+  box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+}
+
+div.buscar button::after{
+	content: "";
+	clear: both;
+}
+
+div.registro button {
+  background-color: #6b97a4;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 10px 5px;
+  cursor: pointer;
+	float: right;
+	display: block;
+	margin-left: 50px;
+}
+
+
+div.registro button:hover{
+  background-color: #305661;
+  color: white;
+  box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+}
+
+div.registro button::after{
 	content: "";
 	clear: both;
 }
