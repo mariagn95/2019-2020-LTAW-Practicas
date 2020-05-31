@@ -86,6 +86,7 @@ function peticion(req, res) {
       case "/img/foto-cabecera.jpg" :
       case "/img/github.png" :
       case "/img/logo.png" :
+      case "/img/tipodepago.png" :
         fs.readFile("." + q.pathname, (err, data) => {
           //-- Generar el mensaje de respuesta
           res.writeHead(200, {'Content-Type': 'image/' + q.pathname.split(".")[1] == "jpg" ? "jpg": "png"});

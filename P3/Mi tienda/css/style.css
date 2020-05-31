@@ -17,6 +17,12 @@ a{
 	color: black;
 }
 
+script{
+	background-color: #ffff;
+	font-family: 'Raleway', sans-serif;
+	text-decoration-color: grey;
+}
+
 
 .cabecera{
 	width: 100%;
@@ -61,9 +67,11 @@ div.buscar button{
   color: #fff;
   font-weight: bold;
   text-decoration: none;
-  padding: 10px 30px;
+  padding: 10px 5px;
   cursor: pointer;
-	float: right;
+	float: left;
+	display: block;
+	margin-left: 50px;
 }
 
 
@@ -89,7 +97,7 @@ div.buscar input[type=text] {
   -webkit-backface-visibility: hidden;
   -webkit-transition: border-color 0.25s ease, box-shadow 0.25s ease;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
-	margin-left: 62%;
+	margin-left: 60%;
 	float: left;
 }
 
@@ -104,6 +112,7 @@ div.buscar input.highlight {
 
 
 div.buscar::after{
+	content: "";
 	clear: both;
 }
 

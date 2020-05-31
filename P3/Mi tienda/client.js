@@ -13,6 +13,7 @@ const apellido = document.getElementById('apellido');
 const usuario = document.getElementById('usuario');
 
 
+
 buscar.onkeyup = ()=>{
   ver.onclick = "location.href='" + ver.value.replace(" ", "") + ".html'";
 }

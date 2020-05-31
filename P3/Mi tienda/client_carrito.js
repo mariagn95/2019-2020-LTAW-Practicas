@@ -2,12 +2,27 @@ const usuario = document.getElementById('usuario');
 const factura = document.getElementById('factura');
 const buscar = document.getElementById('buscar');
 const total = document.getElementById('precio');
+const compra = document.getElementById('compra');
+const finalizar = document.getElementById('finalizar');
 
-
+function init(){
+  $(function(){
+    $('#compra').hide();
+    $('#metodo-pago').hide();
+  });
+}
+finalizar.onclick = ()=>{
+  $(function(){
+    $('#metodo-pago').show();
+  });
+}
 
 
 //-- Cuando el usuario aprieta el botón de ver los productos
 buscar.onclick = ()=>{
+  $(function(){
+    $('#compra').show();
+  });
   //-- Crear objeto para hacer peticiones AJAX
   const m = new XMLHttpRequest();
   //-- Configurar la petición

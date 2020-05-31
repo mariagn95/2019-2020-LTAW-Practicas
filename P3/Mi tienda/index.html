@@ -39,7 +39,8 @@
         $( function() {
           var productos = ["THOR", "IRONMAN", "CAPITAN AMERICA", "WONDERWOMAN", "SPIDERMAN", "SUPERMAN", "HULK", "BATMAN"];
           $( "#buscar" ).autocomplete({
-            source: productos
+            source: productos,
+            minLength: 3
           });
           $("#ver").click(function(){
             $("#formulario").submit();
@@ -47,7 +48,8 @@
         });
 
       </script>
-      <input id="buscar" type="text" placeholder="Buscar.." name="buscar">
+
+      <input id="buscar"type="text" placeholder="Buscar.." name="buscar" >
       <button id="ver" type="button" name="button">BUSCAR</button>
     </form>
     <a href="html/registro.html"><button type="submit">Registro</button></a>

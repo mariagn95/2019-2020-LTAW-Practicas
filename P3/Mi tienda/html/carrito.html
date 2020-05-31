@@ -4,10 +4,12 @@
     <meta charset="utf-8">
     <title> Carrito </title>
     <script src="../client_carrito.js" defer></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
     <link rel="stylesheet" href="../css/carrito.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   </head>
-  <body>
-    <div class="body_carrito">
+  <body onload="init();">
         <center>
           <br>
           <br>
@@ -24,17 +26,81 @@
         <center><p id="factura"></p></center>
         <p><center> Total del pedido : <span id="precio"></span> €</center></p>
 
+
       </div>
 
-      <br>
-      <form class="metodo-pago" action="/pagar" method="POST">
+      <div id="compra">
+        <button id="finalizar" type="button" name="button"> FINALIZAR COMPRA</button>
 
-      </form>
-      <br>
-      <center>
-      <a href="../index.html"><button>Página principal</button></a>
-      </center>
-    </div>
+        <br>
+        <div id="metodo-pago" >
+          <form action="/pagar" method="POST">
+            <h1> Rellena los datos para realizar la compra</h1>
+
+            <div class="completar">
+
+                <div class="caja" id="nombre">
+                  <label for="fname">Nombre:</label>
+                  <input name="nombre" type="text" placeholder="Nombre*" required>
+                </div>
+
+                <div class="caja" id="apellido">
+                    <label for="fname">Apellidos: </label>
+                    <input name="apellido" type="text" placeholder="Apellido*" required>
+                </div>
+
+                <div class="caja" id="correo">
+                  <label for="fname">Correo electrónico: </label>
+                  <input name="email" type="text" required>
+                </div>
+
+                <div class="caja" id="direccion">
+                  <label for="fname">Dirección de envio:</label>
+                  <input name="direccion" type="text" required>
+                </div>
+
+                <div class="caja" id="cpostal">
+                  <label for="fname">Código postal:</label>
+                  <input name="postal" type="tel"  maxlength="5" required>
+                </div>
+
+                <div class="caja" id="telefono">
+                  <label for="fname">Telefono:</label><br>
+                  <input name="telefono" type="tel"  maxlength="9" required>
+                </div>
+
+                <div class="formapago">
+                  <h3>FORMA DE PAGO:</h3>
+
+                  <input type="radio" name="payment" value="Paypal" checked> Paypal<br>
+                  <input type="radio" name="payment" value="Credito"> Tarjeta de credito<br>
+                  <input type="radio" name="payment" value="Transferencia"> Transferencia <br>
+                   <img class="fotopago" src="../img/tipodepago.png">
+                </div>
+
+
+            </div>
+          </form>
+          <br>
+          <button type="volver" name="button" href="../index.html" onclick="myFunction()"> ¡COMPAR!</button>
+          <script>
+            function myFunction() {
+              alert("Gracias pro comprar en Superhero
+                        Esperamos que vuelva");
+            }
+            </script>
+
+          <br>
+
+        </div>
+
+      </div>
+
+
+
+    <center>
+    <a href="../index.html"><button>Página principal</button></a>
+    </center>
 
   </body>
 
