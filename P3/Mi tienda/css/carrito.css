@@ -13,6 +13,10 @@ a{
 	color: black;
 }
 
+p{
+	font-weight: bold;
+}
+
 .cabecera{
 	width: 100%;
 	margin: auto;

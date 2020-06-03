@@ -35,10 +35,12 @@ a{
 }
 
 .pedido{
-	margin: auto;
-	border-radius: 10px;
-	padding: 10px;
-	border: 10px solid black;
+	margin: 50px auto;
+	border-radius: 5px;
+	background-color:  #a2c9d4;
+	padding: 20px;
+	border: 3px solid #6b97a4;
+	width: 50%;
 }
 
 
