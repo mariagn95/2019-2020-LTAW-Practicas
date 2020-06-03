@@ -227,10 +227,11 @@ function peticion(req, res) {
               let apellido = "";
               if (cookie){
                 for (let name in cookie.split('; ')) {
-                  console.log(" ");
-                  console.log("--- Cookies de los productos seleccionados ---");
-                  console.log(cookie.split('; ')[name]);
+
                   if (cookie.split('; ')[name].split('=')[0] == usuario){
+                    console.log(" ");
+                    console.log("--- Cookies de los productos seleccionados ---");
+                    console.log(cookie.split('; ')[name]);
                     //--Convertios el carrito a JSON
                     carrito = JSON.parse(cookie.split('; ')[name].split('&')[2]);
                     precio = parseFloat(cookie.split('; ')[name].split('&')[3]);
@@ -296,10 +297,11 @@ function peticion(req, res) {
             //console.log("Cookie: " + cookie.split('; '));
             if (cookie){
               for (let name in cookie.split('; ')) {
-                console.log(" ");
-                console.log("--- Cookies del carrito ---");
-                console.log(cookie.split('; ')[name].split('=')[0]);
+
                 if (cookie.split('; ')[name].split('=')[0] == params.usuario){
+                  console.log(" ");
+                  console.log("--- Cookies del carrito ---");
+                  console.log(cookie.split('; ')[name].split('=')[0]);
                   registrado = true;
                   //--Convertios el carrito a JSON
                   carrito = cookie.split('; ')[name].split('&')[2];
@@ -340,8 +342,8 @@ function peticion(req, res) {
                   let nombre = data.split('&')[0].split('=')[1];
                   let apellido = data.split('&')[1].split('=')[1];
                   let usuario = data.split('&')[2].split('=')[1];
-                  let email = data.split('&')[3].split('=')[1];
-                  let direccion = data.split('&')[4].split('=')[1];
+                  let email = data.split('&')[3].split('=')[1].replace("%40","@") ;
+                  let direccion = data.split('&')[4].split('=')[1]  ;
                   let cpostal = data.split('&')[5].split('=')[1];
                   let telefono = data.split('&')[6].split('=')[1];
                   let mpago = data.split('&')[7].split('=')[1];
@@ -350,22 +352,19 @@ function peticion(req, res) {
                   let carrito = [];
                   let producto = "";
                   let precio = 0.0;
+
                   if (cookie){
                     for (let name in cookie.split('; ')) {
-                      console.log(" ");
-                      console.log("--- Cookies de los productos seleccionados ---");
-
-                      console.log(cookie);
                       if (cookie.split('; ')[name].split('=')[0] == usuario){
-                        console.log(cookie)
-                        console.log('eeyyyy')
+                        console.log(" ");
+                        console.log("--- Cookies de los productos seleccionados ---");
+                        console.log(cookie.split('; ')[name]);
                         //--Convertios el carrito a JSON
                         carrito = JSON.parse(cookie.split('; ')[name].split('&')[2]);
                         precio = parseFloat(cookie.split('; ')[name].split('&')[3]);
-                        //--Sacamos nombre y apellido
-                        nombre = cookie.split('; ')[name].split('&')[0].split('=')[1];
-                        apellido = cookie.split('; ')[name].split('&')[1];
                         registrado = true;
+                        console.log(carrito);
+                        console.log(precio);
 
                         pedido_final =`
                           <!DOCTYPE html>
@@ -386,21 +385,23 @@ function peticion(req, res) {
                                   </div>
 
                               </div>
-                              <p><center> FACTURA </center></p>
-                              <p>`
+                              <h1><center> FACTURA </center></h1>
+                              <p class="pedido">`
 
-                              pedido_final += "Dtatos del Cliente: " + "<br>"
-                                      "Nombre: " + nombre + "<br>"
-                                      "Apellido: " + apellido + "<br>"
-                                      "Usuario: " + usuario + "<br>"
-                                      "Correo electrónico: " + email + "<br>"
-                                      "Dirección: " + direccion + "<br>"
-                                      "Código postal: " + cpostal + "<br>"
-                                      "Telefono: " + telefono + "<br>"
-                                      "Método de pago utilizado: " + mpago + "<br>"
-                                      "<br>"
-                                      "Productos comprados:" + productos + "<br>"
-                                      "Precio total: " + precio + "<br>"
+                              pedido_final += "<u><strong>Datos del Cliente</strong></u>" + "<br>"
+                                      + "<strong>Nombre:   </strong>" + nombre + "<br>"
+                                      + "<strong>Apellido:   </strong>" + apellido + "<br>"
+                                      + "<strong>Usuario:   </strong>" + usuario + "<br>"
+                                      + "<strong>Correo electrónico:   </strong>" + email + "<br>"
+                                      + "<strong>Método de pago utilizado:   </strong>" + mpago + "<br>"
+                                      + "<br>"
+                                      + "<strong>Productos comprados:   </strong>" + " "+ carrito + " " + "<br>"
+                                      + "<strong>Precio total del pedido:   </strong>" + precio + " €" + "<br>"
+                                      + "<br>"
+                                      + "<strong>* La compra será enviada a la dirección proporcionada anteriormente lo antes posible</strong>"
+                                      + "<br>"
+                                      + "<br>"
+                                      + "<strong>¡MUCHAS GRACIAS POR REALIZAR SU COMPRA EN SUPERHERO!</strong>"
                                 pedido_final +=
 
 
@@ -418,10 +419,12 @@ function peticion(req, res) {
                   }
                   res.statusCode = 200;
                   });
+
                   req.on ('end', () =>{
                     res.setHeader('Content-Type', 'text/html')
                     res.write(pedido_final);
                     res.end();
+                    return
                   });
 
                   return
