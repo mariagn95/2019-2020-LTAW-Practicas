@@ -6,6 +6,7 @@ body{
 	margin: 0;
 	font-family: 'Raleway', sans-serif;
 	background-color: #c9e3eb;
+	margin-bottom: 50px;
 }
 
 a{
@@ -32,6 +33,7 @@ a{
 .galeria1{
 	padding: 50px;
 	align-items: center;
+
 }
 
 .pedido{
@@ -63,8 +65,4 @@ button:hover{
   background-color: #305661;
   color: white;
   box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
-}
-
-.principal{
-	padding: 100px;
 }
