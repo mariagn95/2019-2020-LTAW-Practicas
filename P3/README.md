@@ -32,5 +32,5 @@ seguir comprando.
 
 
 Además, la tienda tiene una caja de búsqueda, para buscar el producto por su nombre. Al escribir 3 ó más caracteres,
-aparece el producto buscado. Al apretar el botón de buscar se envia esta información, y el servidor devuelve una página
+aparece el producto buscado. Al apretar el botón de buscar se envía esta información, y el servidor devuelve una página
 del producto buscado.
