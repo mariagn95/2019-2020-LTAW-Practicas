@@ -329,7 +329,7 @@ function peticion(req, res) {
                 //--chunk lee los datos registrados
                 req.on('data', chunk =>{
                   data = chunk.toString()
-                  console.log(data)
+                  //--Datos del formilario de pago
                   console.log("Nombre: " + data.split('&')[0].split('=')[1]);
                   console.log("Apellido: " + data.split('&')[1].split('=')[1]);
                   console.log("Usuario: " + data.split('&')[2].split('=')[1]);
@@ -339,13 +339,11 @@ function peticion(req, res) {
                   console.log("Telefono: " + data.split('&')[6].split('=')[1]);
                   console.log("Método de pago: " + data.split('&')[7].split('=')[1]);
 
+                  //--Datos que voy a utilizar
                   let nombre = data.split('&')[0].split('=')[1];
                   let apellido = data.split('&')[1].split('=')[1];
                   let usuario = data.split('&')[2].split('=')[1];
                   let email = data.split('&')[3].split('=')[1].replace("%40","@") ;
-                  let direccion = data.split('&')[4].split('=')[1]  ;
-                  let cpostal = data.split('&')[5].split('=')[1];
-                  let telefono = data.split('&')[6].split('=')[1];
                   let mpago = data.split('&')[7].split('=')[1];
 
                   let registrado = false;
@@ -359,12 +357,10 @@ function peticion(req, res) {
                         console.log(" ");
                         console.log("--- Cookies de los productos seleccionados ---");
                         console.log(cookie.split('; ')[name]);
+                        registrado = true;
                         //--Convertios el carrito a JSON
                         carrito = JSON.parse(cookie.split('; ')[name].split('&')[2]);
                         precio = parseFloat(cookie.split('; ')[name].split('&')[3]);
-                        registrado = true;
-                        console.log(carrito);
-                        console.log(precio);
 
                         pedido_final =`
                           <!DOCTYPE html>
