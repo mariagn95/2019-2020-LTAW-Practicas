@@ -11,7 +11,8 @@ chat realizado. Los comando de instalación son:
 
 ---> npm install socket.io
 
-
+El servidor de la práctica se ejecuta.
+Ejemplo de ejecución: mariagn95@mariagn95:~/github/2019-2020-LTAW-Practicas/P4/Chat$ node chat-server.js'
 En el chat se pueden conectar varios usuarios. Cada vez que un usuario se conecta,
 el servidor le envía un mensaje de Bienvenida ("¡Bienvenido a Chating!"), y
 además anuncia al resto de usuarios que se encuentran en el chat, que hay un
